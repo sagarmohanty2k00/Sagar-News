@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="shortcut icon" href="{% static 'sagar.ico' %}" type="image/x-icon">
+    <title>Sagar News - Latest and Trending News</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="vp-5 navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid row">
+          <a class="large-font navbar-brand col-sm" href="#">Sagar News</a>
+          </div>
+        </div>
+      </nav>
+    <!-- Body Video -->
+    <video autoplay muted loop id="myVideo">
+        <source src="https://cdn.glitch.com/e955585f-b3dd-424e-b6ce-ab37b75b8d22%2Fvideo.mp4?v=1581934633800" type="video/mp4">
+    </video>
+    <div class="heading">
+        <h1>Sagar News</h1>
+        <h3>Always Keeps You Ahead</h3>
+    </div>
+    <!-- Latest News/ Searched New -->
+    <div class="container center-container row justify-content-md-center">
+        <h2 class="topic">
+            {{title}}
+        </h2>
+        <form method="GET" action="/search/" class="d-flex col-sm-4">
+            <input name="search" id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="row center-container">
+        {% for data_item in data %}
+        <div class="col-lg-3 col-md-5 post">
+            <img class="post-img" src='{{ data_item.urlToImage }}' alt="">
+            <div class="post-description">
+                <h4 class="title">{{data_item.title}}</h4>
+                <h4>Published On: {{data_item.publishedAt}}</h4>
+                <p>{{data_item.content}}</p>
+                <a href={{data_item.url}} class="read-more"><em>Read More</em></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>
