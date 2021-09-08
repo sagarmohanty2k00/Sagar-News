@@ -11,35 +11,35 @@
     <title>Sagar News - Latest and Trending News</title>
 </head>
 <body>
-    <!-- Navbar -->
+    <!-- Navbar
     <nav class="vp-5 navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid row">
           <a class="large-font navbar-brand col-sm" href="#">Sagar News</a>
           </div>
         </div>
-      </nav>
+      </nav> -->
     <!-- Body Video -->
     <video autoplay muted loop id="myVideo">
         <source src="https://cdn.glitch.com/e955585f-b3dd-424e-b6ce-ab37b75b8d22%2Fvideo.mp4?v=1581934633800" type="video/mp4">
     </video>
-    <div class="heading text-center">
+    <div class="heading text-center mt-0">
         <h1>Sagar News</h1>
         <h3>Always Keeps You Ahead</h3>
     </div>
     <!-- Latest News/ Searched New -->
-    <div class="container center-container row justify-content-md-center">
-        <h2 class="text-center">
+    <div class="container center-container justify-content-md-center">
+        <h2 class="text-center text-white fs-1">
             {{title}}
         </h2>
-        <form method="GET" action="/search/" class="d-flex col-sm-4">
+        <form method="GET" action="/search/" class="d-flex m-auto col-sm-4">
             <input name="search" id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
     <div class="row center-container">
-        {% for data_item in data %}
+        {% for data_item in data.articles %}
         <div class="col-lg-3 col-md-5 post">
-            <img class="post-img" src='{{ data_item.urlToImage }}' alt="">
+            <!-- <img class="post-img" src='{{ data_item.thumbnail }}' alt=""> -->
             <div class="post-description">
                 <h4 class="title">{{data_item.title}}</h4>
                 <h4>Published On: {{data_item.published_date}}</h4>
